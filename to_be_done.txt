@@ -1,0 +1,1 @@
+Make program to find new ads and ads that expired
