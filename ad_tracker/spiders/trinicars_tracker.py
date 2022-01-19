@@ -83,5 +83,6 @@ class Trini_Cars_Spider(scrapy.Spider):
         item = AdTrackerItem()
 
         item['filename'] = self._filename
+        item['date'] = self._today
         item['info'] = ad_info
         yield item

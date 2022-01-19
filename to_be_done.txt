@@ -1,2 +1,4 @@
-Make program to find new ads and ads that expired
-sanitize trinicars with decode and ancode so that it could handle potential unicode inputs
+just trinicars: store ids that disappeared  in separate database and check for reuse
+after scraping write date to appropriate dates text file
+sanitize trinicars with decode and encode so that it could handle potential unicode inputs
+add try except statements

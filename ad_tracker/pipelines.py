@@ -15,6 +15,7 @@ class AdTrackerPipeline:
     def __init__(self):
         self._filename = None
         self.all_info = []
+        self._today = None
         self.standard_ads = {}
 
 
@@ -34,8 +35,13 @@ class AdTrackerPipeline:
             df = df.append(self.all_info, ignore_index=True)
 
         df.to_csv(path, mode='w', index=False, header=True)
+
+        # write date to date file
+        dates_file = self._filename[:-4] + '_dates.txt'
+        with open(dates_file, 'a') as file:
+            file.write('\n'+self._today)        
             
-        print(f"Completed webcrawl for today")
+        print(f"Completed webcrawl for {self._today}")
     
     def process_item(self, item, spider):
 
@@ -43,6 +49,11 @@ class AdTrackerPipeline:
         if self._filename == None:
             self._filename = item['filename']
             print('filename is', self._filename)
+
+        # set date
+        if self._today == None:
+            self._today = item['date']
+            print('Today\'s date is', self._today)
 
         info = item['info']
 
